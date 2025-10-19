@@ -1,0 +1,211 @@
+[2025-10-19 17:47:58]
+Q: Napisz wszystko co wiesz o praktyki zawodowiej w Akademii Łomżyński, napish 1 text krótko i 2 text with more information
+A: Tekst 1 — krótko
+Praktyki zawodowe w Akademii Łomżyńskiej służą zastosowaniu wiedzy ze studiów w realnym środowisku pracy i zebraniu materiałów do pracy dyplomowej. Student realizuje praktykę zgodnie z programem kierunku, prowadzi dziennik, przygotowuje raport, przestrzega BHP, ppoż. i ochrony danych oraz ma ważne ubezpieczenie NNW. Brak zaliczenia wymaganej praktyki oznacza niezaliczenie przedmiotu; formę zaliczenia ustala Dziekan (zależnie od ECTS w semestrze). Nadzór sprawuje Koordynator Praktyk; w razie negatywnej opinii przysługuje odwołanie do Dziekana. Uregulowano obowiązki uczelni, studenta i organizatora, kwestie poufności oraz odpowiedzialność dyscyplinarną. Wzory dokumentów (program praktyki, skierowanie, umowa, dziennik, raport, protokół wizyty, ankieta) są integralną częścią regulaminu. Szczegółowe zasady godzin/terminów zależą od kierunku; w dostarczonych materiałach podano np. dla kierunku Technologia żywności i żywienie człowieka 960/480 godz. praktyk (I/II stopień).
+
+Tekst 2 — szerzej
+Na podstawie udostępnionych fragmentów regulaminów i materiałów Wydziału Nauk Informatyczno‑Technologicznych (dawniej: Wydział Informatyki i Nauk o Żywności) Akademii Łomżyńskiej:
+
+1) Cele i charakter praktyk
+- Cel główny: integracja wiedzy teoretycznej z praktyką funkcjonowania organizacji; nabycie umiejętności potrzebnych w pracy zawodowej; zebranie materiałów do pracy dyplomowej, spójnych z miejscem praktyk i wykonywanymi zadaniami.
+- Efekty rozwojowe: organizacja pracy własnej, praca zespołowa, zarządzanie czasem, sumienność i odpowiedzialność, aktywność i przedsiębiorczość, etyczne i odpowiedzialne działanie (w tym w kontekście środowiskowym i społecznym).
+- Zgodność: przedmiot praktyki powinien odpowiadać kierunkowi studiów i sylwetce absolwenta.
+
+2) Organizacja i dokumentacja
+- Dokumenty: 
+  • program praktyki dla kierunku (załącznik nr 1), 
+  • skierowanie na praktykę (nr 2), 
+  • umowa o organizację praktyki (nr 3), 
+  • dziennik praktyk (nr 4), 
+  • wzór raportu z praktyki (nr 5), 
+  • protokół wizyty monitorującej (nr 6), 
+  • ankieta oceniająca przebieg praktyki (nr 7).
+- Obowiązki studenta:
+  • realizacja praktyki zgodnie z programem i zasadami u organizatora, 
+  • przestrzeganie BHP, ppoż. oraz ochrony danych (RODO) i poufności, 
+  • systematyczne prowadzenie dziennika praktyk, 
+  • sporządzenie samooceny/raportu po praktyce, 
+  • posiadanie ważnego ubezpieczenia NNW.
+- Obowiązki uczelni:
+  • opracowanie programu praktyki, 
+  • zapoznanie studenta z programem, 
+  • nadzór dydaktyczny i organizacyjny, 
+  • kontrola realizacji (w tym wizyty monitorujące).
+- Organizator praktyk (pracodawca): zapewnia m.in. warunki do realizacji programu i BHP.
+
+3) Weryfikacja i zaliczenie
+- Sposoby weryfikacji efektów są określone w sylabusie przedmiotu; obejmują m.in. komplet dokumentacji praktyk i raport z praktyki.
+- W regulaminie wskazano, że weryfikacja odbywa się „na trzech poziomach” (szczegóły nie zostały tu przytoczone).
+- Brak zaliczenia praktyki w wymaganym wymiarze skutkuje niezaliczeniem przedmiotu. O formie zaliczenia decyduje Dziekan, zależnie od liczby ECTS uzyskanych przez studenta w danym semestrze.
+
+4) Role i odwołania
+- Kierunkowy Koordynator Praktyk Zawodowych wydaje opinię o praktyce; w razie opinii negatywnej student może odwołać się do Dziekana.
+- W sprawach nieuregulowanych i w kwestiach spornych decyzje podejmuje Dziekan.
+
+5) Odpowiedzialność i etyka
+- Naruszenia godności studenta podczas praktyki lub przepisów obowiązujących u organizatora podlegają odpowiedzialności dyscyplinarnej przed komisjami dyscyplinarnymi uczelni; nie wyklucza to odpowiedzialności na zasadach obowiązujących w zakładzie pracy.
+- Podkreślono obowiązek zachowania tajemnicy służbowej, ochrony poufności i danych.
+
+6) Praktyki a zatrudnienie/własna działalność
+- Student zatrudniony: zobowiązany do przedłożenia Koordynatorowi zaświadczenia o zatrudnieniu oraz zakresu obowiązków wykonywanych w pracy.
+- Student prowadzący działalność gospodarczą: przedkłada zakres obowiązków oraz zaświadczenie z CEIDG lub odpis z KRS.
+Uwaga: na podstawie dostarczonych fragmentów wynika obowiązek dokumentowania; pełne zasady zaliczania praktyk na podstawie pracy/działalności nie zostały w materiale przytoczone.
+
+7) Przykładowe dane kierunkowe dostępne w materiałach
+- Dla kierunku Technologia żywności i żywienie człowieka: wskazano 960/480 godzin praktyk zawodowych (odpowiednio I/II stopień) oraz możliwość realizacji praktyk za granicą w ramach Erasmus+. Brak w dostarczonych fragmentach analogicznych precyzyjnych wymiarów dla innych kierunków (np. Informatyka, Automatyka i robotyka).
+
+8) Luki w udostępnionym kontekście
+- Brak pełnego regulaminu (m.in. szczegółowych procedur zaliczeń warunkowych, terminów, wymiarów godzinowych dla poszczególnych kierunków).
+- Nie podano tu pełnych kryteriów trzech poziomów weryfikacji efektów uczenia się.
+- Ewentualne różnice kierunkowe (wymiar, terminy, forma dokumentacji) mogą występować i powinny być sprawdzane w sylabusie i regulaminie właściwym dla danego kierunku/rocznika.
+
+Podsumowanie: Akademia Łomżyńska prowadzi praktyki zgodne z profilem praktycznym uczelni. Kluczowe są: zgodność z kierunkiem, komplet dokumentacji (dziennik, raport, ankiety), bezpieczeństwo i poufność, nadzór Koordynatora i możliwość odwołania do Dziekana. Niezaliczenie wymaganego wymiaru skutkuje niezaliczeniem przedmiotu. Szczegóły godzinowe/terminowe są kierunkowe i wymagają wglądu do sylabusa i pełnego regulaminu.
+Sources:
+https://al.edu.pl/wnit/images/Praktyki/Regulamin_praktyk_zawodowych_WINZ_senat_18_12_2020.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Praktyki/Regulamin_praktyk_zawodowych_WINZ_senat_18_12_2020.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Praktyki/Regulamin_praktyk_zawodowych_WINZ_senat_18_12_2020.pdf
+https://al.edu.pl/wnit/images/przedłużenie_terminu_złożenia_pracy_dyplomowej.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Załącznik_nr_4a_-_Format_pracy_inżynierskiej_dla_kierunku_informatyka_I_stopnia.docx
+https://al.edu.pl/wnit/images/Załącznik_nr_4b_-_Format_pracy_inżynierskiej_dla_kierunku_automatyka_i_robotyka_I_stopnia2.docx
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Program_praktyki_zawodowej_na_kierunku_Mechatronika_2024.pdf
+https://al.edu.pl/wnit/images/Zał._1_Instrukcja_uzupełniania_sylabusa.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Program_praktyki_zawodowej_na_kierunku_AiR_2024.pdf
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/zmiana_tematu_.pdf
+https://al.edu.pl/wnit/images/Program_praktyki_zawodowej_na_kierunku_Informatyka_I_stopnia.pdf
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+---
+[2025-10-19 17:49:55]
+Q: Napisz co nowego w Akademii Łomżyńskiej
+A: Na podstawie udostępnionych materiałów najnowsze informacje o Akademii Łomżyńskiej są następujące:
+- Zmiana nazwy uczelni: od 1.06.2023 uczelnia działa jako Akademia Łomżyńska (wcześniej, 1.03.2022–31.05.2023: Akademia Nauk Stosowanych w Łomży).
+- Nowa jednostka: 15.09.2023 powołano Wydział Prawa i Administracji (czwarty wydział w strukturze).
+- Rozszerzenie oferty kształcenia: Wydział Nauk Informatyczno‑Technologicznych otrzymał w lipcu 2023 pozwolenie na prowadzenie kierunku Logistyka (studia I stopnia).
+- Aktualne dane o studentach WNIT: 
+  - 338 studentów (stan na 1.10.2024), w tym 27 na Automatyce i Robotyce (I stopień, stacjonarne).
+  - Dla informatyki (stan na 1.10.2023): 203 studentów na I stopniu (122 stacjonarnie, 81 niestacjonarnie) i 25 na II stopniu (stacjonarne).
+- Akredytacja/ocena programowa: przygotowane Raporty samooceny (profil praktyczny) dla kierunków Automatyka i robotyka oraz Informatyka na potrzeby Polskiej Komisji Akredytacyjnej.
+- Obsługa spraw studenckich: dostępne wzory podań m.in. o:
+  - przedłużenie terminu złożenia pracy dyplomowej,
+  - zmianę tematu pracy,
+  - warunkowy wpis na semestr,
+  - urlop krótkoterminowy/długoterminowy,
+  - indywidualną organizację studiów (IOS),
+  - przesunięcie terminu płatności czesnego,
+  - skreślenie z listy studentów,
+  - podanie ogólne (do Dziekana lub Rektora).
+- Wytyczne dla prac dyplomowych (w materiałach): m.in. obowiązek elementu badawczego w pracach magisterskich, zasady prac zespołowych, oznaczenia powstałego oprogramowania, kryteria oceny i wskazania do wyróżnień.
+
+Uwaga na luki: w dostarczonych fragmentach brak bieżących „newsów” z 2025 r.; najświeższe dane dotyczyły 2023–2024 oraz ogólnych dokumentów (raporty PKA, wzory podań, wytyczne). Jeśli potrzebujesz aktualności z ostatnich tygodni/miesięcy, daj znać, czego szukać (wydział/kierunek/wydarzenia).
+Sources:
+https://al.edu.pl/wnit/images/przedłużenie_terminu_złożenia_pracy_dyplomowej.pdf
+https://al.edu.pl/wnit/images/zmiana_tematu_.pdf
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/Warunkowy_wpis.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_Wydziału.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Podanie_do__Rektora.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci?start=72
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_-__urlop.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_-_przesunięcie_terminu_płatności_.pdf
+https://al.edu.pl/wnit/images/IOS.pdf
+https://al.edu.pl/wnit/images/Skreślenie_z_listy_studentów.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Regulamin_Postępowania_Rekrutacyjnego_w_Akademii_Łomżyńskiej_na_rok_2025.pdf
+https://al.edu.pl/wnit/images/załącznik_nr_1_do_Regulaminu_Postępowania_Rekrutacyjnego_w_Akademii_Łomżyńskiej_na_rok_2025_4.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci?start=80
+---
+[2025-10-19 18:19:13]
+Q: Napisz cos o Akademii
+A: Akademia Łomżyńska (AL) to uczelnia o profilu praktycznym w Łomży (ul. Akademicka 14), kształcąca m.in. na Wydziale Nauk Informatyczno‑Technologicznych oraz prowadząca kierunki: informatyka, automatyka i robotyka, technologia żywności i żywienie człowieka, a także kierunki na wydziałach: Nauk o Zdrowiu, Prawa i Administracji oraz Nauk Społecznych i Humanistycznych.
+
+Najważniejsze fakty z udostępnionych materiałów:
+- Praktyczny profil i współpraca z otoczeniem:
+  - Uczelnia organizuje i współorganizuje wydarzenia dla regionu, np. Łomżyńskie Targi Pracy (ok. 500 uczestników, 40 firm, 60 ofert pracy; promowane m.in. przez Suwalską SSE). Informacje: al.edu.pl/kalendarium/w/lomzynskie-targi-pracy; relacje medialne: narew.info/artykul/29842… i mylomza.pl/artykul/…n1518230.
+  - Aktywny udział w wydarzeniach edukacyjnych (np. „Giełda pomysłów na życie” III LO w Łomży) oraz warsztatach w ramach Podlaskiego Festiwalu Nauki i Sztuki.
+  - Rada Praktyków współtworzy kierunki rozwoju i programy studiów, wspiera praktyki, a uczelnia rozwija model kształcenia zbliżony do studiów dualnych (nauka–biznes). 
+- Aktywność studencka i popularyzacja nauki:
+  - Studenckie Koło Naukowe Robotyki „RoboClinic” oraz konkursy RoboExe:
+    - CodeMaster (edycje: 2018, 2019, 2023, 2024) – programowanie i algorytmika.
+    - PLC Expert (2019, 2022, 2023, 2024) – programowanie sterowników PLC.
+    - RobotChallenge (2022, 2023) – roboty mobilne.
+  - Warsztaty tematyczne dla młodzieży (m.in. skanowanie i druk 3D, termowizja, techniki nadruku, sterowniki PLC, zajęcia z robotyki i elektroniki).
+- Infrastruktura i wyróżnienia:
+  - Nowoczesna baza Wydziału Informatyki i Nauk o Żywności; budynek był nominowany do nagrody PZITB jako obiekt użyteczności publicznej; organizowane są konferencje, sympozja i wystawy (np. mobilna ekspozycja „70 lat polskiej informatyki” w 2018 r.).
+- Dyplomowanie i jakość kształcenia:
+  - Jasne wytyczne do prac inżynierskich i magisterskich: przegląd literatury z naciskiem na źródła recenzowane, szczegółowa metodyka badań, opis projektowania i implementacji, wymogi formalne (format, styl, anti‑plagiat w APD).
+  - Weryfikacja efektów uczenia się odbywa się poprzez egzaminy/zaliczenia zgodnie z sylabusami i Regulaminem Studiów; stosowana jest skala ocen 3,0–5,0.
+- Wsparcie dla studentów:
+  - Dostępne wzory podań i procedury: przedłużenie terminu złożenia pracy (do 3 miesięcy), zmiana tematu pracy, warunkowy wpis na semestr, przesunięcie terminu płatności czesnego, indywidualna organizacja studiów (IOS), wnioski do Rektora. 
+- Ludzie i sukcesy:
+  - Przykład rodzinnej ścieżki edukacyjnej na AL („Z życia Akademii: Mama i Córka”) na kierunku Bezpieczeństwo i certyfikacja żywności oraz awanse zawodowe absolwentów w branży przetwórstwa spożywczego.
+
+Jeśli potrzebujesz informacji o konkretnym kierunku, wydziale, zasadach dyplomowania lub rekrutacji – doprecyzuj, a podsumuję dostępne dokumenty lub wskażę brakujące dane na podstawie udostępnionego kontekstu.
+Sources:
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/przedłużenie_terminu_złożenia_pracy_dyplomowej.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci?start=48
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci/239-z-zycia-akademii-mama-i-corka
+https://al.edu.pl/wnit/images/zmiana_tematu_.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_Wydziału.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_-_przesunięcie_terminu_płatności_.pdf
+https://al.edu.pl/wnit/images/Warunkowy_wpis.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci?start=88
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Podanie_do__Rektora.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Załącznik_Nr_2_RP_Porozumienie_o_współpracy.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Załącznik_Nr_2_Porozumienie_o_współpracy.pdf
+https://al.edu.pl/wnit/images/IOS.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+---
+[2025-10-19 18:32:27]
+Q: Tell me something new about Akademia Łomżyńska
+A: Oto kilka nowych informacji o Akademii Łomżyńskiej wynikających z przedstawionych dokumentów:
+
+- Zmiana nazwy uczelni (najnowsza): od 1 marca 2022 r. do 31 maja 2023 r. funkcjonowała jako Akademia Nauk Stosowanych w Łomży, a od 1 czerwca 2023 r. oficjalnie przyjęła nazwę Akademia Łomżyńska (zmiany potwierdzone stosownymi aktami prawnymi).  
+- Nowa struktura wydziałowa (2023): 15 września 2023 r. powołano czwarty wydział — Wydział Prawa i Administracji.  
+- Rozwój oferty studiów (2023): w lipcu 2023 r. Wydział Nauk Informatyczno‑Technologicznych otrzymał pozwolenie na prowadzenie studiów na kierunku Logistyka I stopnia.  
+- Mobilność i jakość badań: Uczelnia uzyskała Kartę Erasmus (ECHE) na lata 2021–2027 oraz w dniu 7 września 2022 r. otrzymała logo HR Excellence in Research.  
+- Pozycja w rankingach: w 2022 r. Akademia zajęła 2. miejsce w kraju wśród uczelni zawodowych w rankingu „Perspektywy”.  
+- Dane kadrowo‑student­skie (stan na 1.10.2023): Wydział Nauk Informatyczno‑Technologicznych kształcił 375 studentów, w tym 203 na Informatyce I stopnia (122 stacjonarnie, 81 niestacjonarnie) oraz 25 na Informatyce II stopnia stacjonarnie.  
+- Sukcesy studentów i promocja kierunków: studenckie prace dyplomowe zdobywały nagrody (np. w konkursie Agencji Rozwoju Przemysłu), a wydział organizuje lokalne i regionalne inicjatywy popularnonaukowe i konkursy (m.in. cykl RoboExe).
+
+Jeśli chcesz, mogę rozwinąć którąś z tych informacji (np. podać więcej danych o Wydziale Nauk Informatyczno‑Technologicznych, programie Erasmus na kierunku Informatyka, albo o osiągnięciach w konkursach).
+Sources:
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/images/raport_samooceny.pdf
+https://al.edu.pl/wnit/images/przedłużenie_terminu_złożenia_pracy_dyplomowej.pdf
+https://al.edu.pl/wnit/images/zmiana_tematu_.pdf
+https://al.edu.pl/wnit/images/Procedura_dyplomowania_WNIT_2025_2026.pdf
+https://al.edu.pl/wnit/images/Raport_Samooceny_AiR_2024.pdf
+https://al.edu.pl/wnit/wydzial/aktualnosci?start=72
+https://al.edu.pl/wnit/images/Oświadczenie_po_urlopie.pdf
+https://al.edu.pl/wnit/images/Programy_plany_studiów/Informatyka_I_stopień/Informatyka_-_Sposób_realizacji_zajęć_-_semestr_zimowy_2020_2021.pdf
+https://al.edu.pl/wnit/images/Podanie_do__Rektora.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/Podanie_do_Dziekana_Wydziału.pdf
+https://al.edu.pl/wnit/images/Raport_samooceny_kierunku_Informatyka.pdf
+https://al.edu.pl/wnit/images/IOS.pdf
+https://al.edu.pl/wnit/images/Warunkowy_wpis.pdf
+https://al.edu.pl/wnit/images/Rada_Nagrody_2022.pdf
+---
