@@ -146,11 +146,9 @@ class RAGApp:
         self.root.configure(bg=self.t["BG"])
         self.root.minsize(780, 520)
 
-        # For unique link tags
+        # For unique link tags / widgets
         self._link_counter = 0
-
-        # Track popups to avoid multiple windows per entry
-        self.entry_windows = []
+        self._source_chips = []  # keep refs to embedded chip widgets
 
         # tk variables (for toggles)
         self.theme_var = tk.StringVar(value=self.theme_name)
@@ -193,7 +191,7 @@ class RAGApp:
             insertbackground=self.t["FG"], relief=tk.FLAT, font=("Segoe UI", 10)
         )
         self.history_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=(0, 10))
-        self.history_text.config(state=tk.DISABLED)
+        self.history_text.config(state=tk.NORMAL)
 
         self.history_entries = []
         self.load_history_into_ui()
@@ -208,9 +206,22 @@ class RAGApp:
             insertbackground=self.t["FG"], relief=tk.FLAT, font=("Segoe UI", 11)
         )
         self.chat_display.pack(fill=tk.BOTH, padx=12, pady=(12, 8), expand=True)
-        self.chat_display.config(state=tk.DISABLED)
+        self.chat_display.config(state=tk.NORMAL)
 
         self._configure_text_tags()
+        self._enable_selectable_readonly()  # Enable selection/copy while blocking edits
+
+        # Blue selection highlight + ensure it stays visible over styled text
+        accent = self.t["ACCENT"]
+        self.chat_display.configure(
+            selectbackground=accent,
+            selectforeground="#ffffff",
+            inactiveselectbackground=accent
+        )
+        self.chat_display.tag_configure("sel", background=accent, foreground="#ffffff")
+        self.chat_display.tag_raise("sel")
+        # Ensure the widget gets focus on click so selection highlight shows
+        self.chat_display.bind("<Button-1>", lambda e: self.chat_display.focus_set(), add="+")
 
         # Progress overlay (appears above input area)
         self.progress_frame = tk.Frame(chat_side, bg=self.t["BG"])
@@ -297,7 +308,7 @@ class RAGApp:
         help_btn.pack(side=tk.RIGHT, padx=(0, 8))
         self._add_hover(help_btn)
 
-    # ---- Text widget styling (chat bubbles, metadata, links) ----
+    # ---- Text widget styling (chat bubbles, metadata) ----
     def _configure_text_tags(self):
         # General paragraph spacing
         self.chat_display.tag_config("space_before", spacing1=6)
@@ -308,7 +319,7 @@ class RAGApp:
             "ai_bubble",
             background=self.t["BUBBLE_AI_BG"],
             foreground=self.t["BUBBLE_AI_FG"],
-            lmargin1=14, lmargin2=14, rmargin=140,  # left margin big, right margin small
+            lmargin1=14, lmargin2=14, rmargin=140,
             spacing1=6, spacing3=10,
             font=("Segoe UI", 11)
         )
@@ -317,7 +328,7 @@ class RAGApp:
             "user_bubble",
             background=self.t["BUBBLE_USER_BG"],
             foreground=self.t["BUBBLE_USER_FG"],
-            lmargin1=140, lmargin2=140, rmargin=14,  # right margin big
+            lmargin1=140, lmargin2=140, rmargin=14,
             spacing1=6, spacing3=10,
             font=("Segoe UI", 11, "bold")
         )
@@ -325,16 +336,7 @@ class RAGApp:
         # Small meta text (e.g., "Sources")
         self.chat_display.tag_config("meta", foreground=self.t["SUBTLE_FG"], font=("Segoe UI", 9), spacing1=4)
 
-        # Source chip style
-        self.chat_display.tag_config(
-            "chip",
-            background=self.t["CHIP_BG"],
-            foreground=self.t["CHIP_FG"],
-            lmargin1=34, lmargin2=34, rmargin=14,
-            spacing1=2, spacing3=6,
-            font=("Segoe UI", 9)
-        )
-        # Clickable area uses this tag name prefix: "src_link_..."
+        # We keep a chip-like look using embedded Labels, so no "chip" click tags needed here
 
     # ---- Utility: Hover effect for flat buttons ----
     def _add_hover(self, btn):
@@ -358,6 +360,69 @@ class RAGApp:
         entry.bind("<FocusIn>", on_focus_in)
         entry.bind("<FocusOut>", on_focus_out)
 
+    # --- Enable selection/copy while blocking edits ---
+    def _enable_selectable_readonly(self):
+        w = self.chat_display
+        w.config(state=tk.NORMAL, cursor="xterm")  # NORMAL so selection works
+
+        def on_key(e):
+            ctrl = (e.state & 0x4) != 0  # Control pressed
+            # Allow copy and select-all
+            if ctrl and e.keysym.lower() == "c":
+                return  # let default copy work
+            if ctrl and e.keysym.lower() == "a":
+                w.tag_add("sel", "1.0", "end-1c")
+                return "break"
+            # Allow navigation keys
+            if e.keysym in ("Left","Right","Up","Down","Home","End","Prior","Next","Tab",
+                            "Shift_L","Shift_R","Control_L","Control_R","Alt_L","Alt_R"):
+                return
+            # Block any text modifications (typing, BackSpace, Delete, Return, etc.)
+            return "break"
+
+        w.bind("<Key>", on_key, add="+")
+        # Block paste and middle-click paste
+        w.bind("<<Paste>>", lambda e: "break", add="+")
+        w.bind("<Button-2>", lambda e: "break", add="+")
+
+        # Right-click context menu for Copy/Select All
+        self._install_chat_context_menu()
+
+    def _install_chat_context_menu(self):
+        menu = tk.Menu(self.chat_display, tearoff=0)
+        menu.add_command(label="Copy", command=lambda: self.chat_display.event_generate("<<Copy>>"))
+        menu.add_command(label="Select All", command=lambda: self.chat_display.tag_add("sel", "1.0", "end-1c"))
+
+        def show_menu(e):
+            try:
+                menu.tk_popup(e.x_root, e.y_root)
+            finally:
+                menu.grab_release()
+
+        # Windows/Linux right-click; macOS uses Control-Click as well
+        self.chat_display.bind("<Button-3>", show_menu, add="+")
+
+    # --- Create a clickable source chip (embedded widget) ---
+    def _make_source_chip(self, label_text, url):
+        chip = tk.Label(
+            self.chat_display,
+            text=f"↗ {label_text}",
+            bg=self.t["CHIP_BG"],
+            fg=self.t["CHIP_FG"],
+            font=("Segoe UI", 9),
+            cursor="hand2",
+            padx=8,
+            pady=2
+        )
+
+        def open_link(_=None, u=url):
+            self._open_link(u)
+
+        chip.bind("<Button-1>", open_link)
+        chip.bind("<Enter>", lambda e, w=chip: w.config(underline=True))
+        chip.bind("<Leave>", lambda e, w=chip: w.config(underline=False))
+        return chip
+
     # --- Helpers for history preview formatting ---
     def _make_preview_lines(self, entry_text: str):
         lines = entry_text.splitlines()
@@ -367,7 +432,7 @@ class RAGApp:
             preview = lines + [""] * (self.PREVIEW_LINES - len(lines))
         return preview
 
-    # --- Load existing history into sidebar ---
+    # --- Load existing history into sidebar, only "(click to expand)" clickable ---
     def load_history_into_ui(self):
         entries = [e.strip() for e in load_history() if e.strip()]
         self.history_entries = entries
@@ -375,29 +440,45 @@ class RAGApp:
         self.history_text.config(state=tk.NORMAL)
         self.history_text.delete("1.0", tk.END)
 
+        accent = self.t["ACCENT"]
+        click_text = "(click to expand)"
+
         for i, entry in enumerate(entries):
             preview_lines = self._make_preview_lines(entry)
-            preview = "\n".join(preview_lines)
 
-            start_idx = self.history_text.index(tk.END)
-            spacing = "\n" * self.PREVIEW_SPACING_BLANK_LINES
-            self.history_text.insert(tk.END, preview + spacing)
+            # Mark start of this preview block
+            block_start = self.history_text.index(tk.END)
 
-            end_idx = self.history_text.index(tk.END)
-            tag = f"hist_item_{i}"
+            # Insert the preview lines (plain)
+            for line in preview_lines:
+                self.history_text.insert(tk.END, line + "\n")
 
-            self.history_text.tag_add(tag, start_idx, end_idx)
-            self.history_text.tag_config(tag, foreground=self.t["ACCENT"])
-            self.history_text.tag_add("hist_click", start_idx, end_idx)
-            self.history_text.tag_bind(tag, "<Button-1>", lambda e, idx=i: self._on_history_click(e, idx))
+            # Add spacing between previews
+            self.history_text.insert(tk.END, "\n" * self.PREVIEW_SPACING_BLANK_LINES)
 
-        self.history_text.config(state=tk.DISABLED)
+            block_end = self.history_text.index(tk.END)
+
+            # Find only the "(click to expand)" substring inside this block
+            idx = self.history_text.search(click_text, block_start, block_end)
+            if idx:
+                start_idx = idx
+                end_idx = f"{idx}+{len(click_text)}c"
+                tag = f"hist_click_{i}"
+
+                self.history_text.tag_add(tag, start_idx, end_idx)
+                self.history_text.tag_config(tag, foreground=accent, underline=True)
+
+                # Hover and click
+                self.history_text.tag_add("hist_click", start_idx, end_idx)
+                self.history_text.tag_bind(tag, "<Button-1>", lambda e, idx=i: self._on_history_click(e, idx))
+
+        self.history_text.config(state=tk.NORMAL)  # keep selectable
 
     def _on_history_click(self, event, idx: int):
         self.open_history_entry(idx)
         return "break"
 
-    # --- Open full history entry in a popup window (single per entry) ---
+    # --- Open full history entry in a popup window ---
     def open_history_entry(self, idx: int):
         if idx < 0 or idx >= len(self.history_entries):
             return
@@ -429,19 +510,23 @@ class RAGApp:
                                         insertbackground=self.t["FG"], relief=tk.FLAT, font=("Segoe UI", 10))
         txt.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 8))
         txt.insert(tk.END, full_text)
-        txt.config(state=tk.DISABLED)
+        txt.config(state=tk.NORMAL)
+
+        # Allow selection + blue highlight in popup too
+        accent = self.t["ACCENT"]
+        txt.configure(selectbackground=accent, selectforeground="#ffffff", inactiveselectbackground=accent)
+        txt.tag_configure("sel", background=accent, foreground="#ffffff")
+        txt.tag_raise("sel")
 
     # --- Clear chat area ---
     def start_new_chat(self):
         self.chat_display.config(state=tk.NORMAL)
         self.chat_display.delete("1.0", tk.END)
-        self.chat_display.config(state=tk.DISABLED)
         self.input_field.delete(0, tk.END)
 
     # --- Send message and get answer (non-blocking) ---
     def send_message(self, event=None):
         query = self.input_field.get().strip()
-        # Avoid sending the placeholder
         if not query or query.lower().startswith("type your question"):
             return
 
@@ -479,19 +564,14 @@ class RAGApp:
     # --- Insert chat bubble with styling ---
     def insert_bubble(self, sender: str, text: str):
         self.chat_display.config(state=tk.NORMAL)
-
         tag = "user_bubble" if sender.lower().startswith("you") else "ai_bubble"
-        # Split long messages to avoid overly wide rectangles
         wrapped = self._wrap_text(text, self.BUBBLE_MAX_WIDTH_CHARS)
-
         self.chat_display.insert(tk.END, wrapped + "\n", (tag,))
         self.chat_display.insert(tk.END, "\n", ("space_after",))
-        self.chat_display.config(state=tk.DISABLED)
         self.chat_display.see(tk.END)
 
     def _wrap_text(self, text, width):
         import textwrap
-        # Keeps paragraphs intact
         parts = []
         for para in text.splitlines():
             if not para.strip():
@@ -501,29 +581,27 @@ class RAGApp:
                                            drop_whitespace=False))
         return "\n".join(parts)
 
-    # --- Insert source chips under the last AI message ---
+    # --- Insert source chips as embedded clickable widgets ---
     def _insert_sources(self, sources):
-        self.chat_display.config(state=tk.NORMAL)
-        self.chat_display.insert(tk.END, "Sources:\n", ("meta",))
+        text = self.chat_display
+        text.config(state=tk.NORMAL)
 
+        # "Sources:" header
+        text.insert(tk.END, "Sources:\n", ("meta",))
+
+        # Create each chip as an embedded Label (clickable)
         for src in sources:
-            # Show shorter text
-            label = self._shorten_source(src)
-            start_idx = self.chat_display.index(tk.END)
-            chip_text = f"  ↗ {label}\n"
-            self.chat_display.insert(tk.END, chip_text, ("chip",))
+            short = self._shorten_source(src)
+            # Optional small indent before the chip
+            text.insert(tk.END, "  ")
+            chip = self._make_source_chip(short, src)
+            self._source_chips.append(chip)  # keep refs so we can restyle on theme change
+            text.window_create(tk.END, window=chip)
+            text.insert(tk.END, "\n")
 
-            end_idx = self.chat_display.index(tk.END)
-            tag = f"src_link_{self._link_counter}"
-            self._link_counter += 1
-            self.chat_display.tag_add(tag, start_idx, end_idx)
-            self.chat_display.tag_bind(tag, "<Button-1>", lambda e, url=src: self._open_link(url))
-            self.chat_display.tag_bind(tag, "<Enter>", lambda e: self.chat_display.config(cursor="hand2"))
-            self.chat_display.tag_bind(tag, "<Leave>", lambda e: self.chat_display.config(cursor=""))
-
-        self.chat_display.insert(tk.END, "\n", ("space_after",))
-        self.chat_display.config(state=tk.DISABLED)
-        self.chat_display.see(tk.END)
+        text.insert(tk.END, "\n", ("space_after",))
+        text.tag_raise("sel")  # keep blue selection visible on top
+        text.see(tk.END)
 
     def _shorten_source(self, src: str, max_len: int = 68):
         import os
@@ -535,10 +613,20 @@ class RAGApp:
 
     # --- Open links or show info for non-HTTP paths ---
     def _open_link(self, url):
-        if url.startswith("http://") or url.startswith("https://"):
-            webbrowser.open(url)
-        else:
-            messagebox.showinfo("Local Source", f"Local file or non-HTTP path:\n{url}")
+        try:
+            if url.startswith(("http://", "https://")):
+                webbrowser.open_new_tab(url)
+            else:
+                # Optional: try to open local files; fallback to info box
+                if os.name == "nt":
+                    try:
+                        os.startfile(url)  # may raise if not a file
+                        return
+                    except Exception:
+                        pass
+                messagebox.showinfo("Local Source", f"Local file or non-HTTP path:\n{url}")
+        except Exception as e:
+            messagebox.showerror("Open Link Error", f"Couldn't open:\n{url}\n\n{e}")
 
     # --- Update sidebar history ---
     def update_history(self):
@@ -573,10 +661,9 @@ class RAGApp:
         self._apply_theme()
 
     def _apply_theme(self):
-        # Repaint all relevant widgets
         self.root.configure(bg=self.t["BG"])
 
-        # Header is the first child
+        # Header
         header = self.root.winfo_children()[0]
         header.configure(bg=self.t["PANEL_BG"], highlightbackground=self.t["DIVIDER"])
         for w in header.winfo_children():
@@ -587,7 +674,6 @@ class RAGApp:
                             activebackground=self.t["BUTTON_ACTIVE_BG"],
                             activeforeground=self.t["FG"])
             elif isinstance(w, tk.Label):
-                # Model badge and title
                 if "Model:" in getattr(w, "cget", lambda x: "")("text"):
                     w.configure(bg=self.t["BUTTON_BG"], fg=self.t["SUBTLE_FG"])
                 else:
@@ -605,11 +691,9 @@ class RAGApp:
                 for cc in child.winfo_children():
                     if isinstance(cc, tk.Label):
                         cc.configure(bg=self.t["PANEL_BG"], fg=self.t["FG"])
-
         self.history_text.configure(bg=self.t["TEXT_BG"], fg=self.t["FG"], insertbackground=self.t["FG"])
 
         # Chat side
-        # It's the other child of body
         chat_side = body.winfo_children()[1]
         chat_side.configure(bg=self.t["BG"])
 
@@ -618,10 +702,9 @@ class RAGApp:
         self.progress_frame.configure(bg=self.t["BG"])
         self.progress_label.configure(bg=self.t["BG"], fg=self.t["SUBTLE_FG"])
 
-        # Input row is last child
+        # Input row
         input_row = chat_side.winfo_children()[-1]
         input_row.configure(bg=self.t["BG"])
-
         self.input_field.configure(bg=self.t["ENTRY_BG"], fg=self.t["FG"], insertbackground=self.t["FG"])
 
         for btn in [self.send_button, self.new_chat_button]:
@@ -629,8 +712,22 @@ class RAGApp:
                           activebackground=self.t["BUTTON_ACTIVE_BG"],
                           activeforeground=self.t["FG"])
 
-        # Update styles for bubbles and chips
+        # Update styles for bubbles and metadata
         self._configure_text_tags()
+
+        # Selection highlight (re-apply after theme switch)
+        accent = self.t["ACCENT"]
+        self.chat_display.configure(selectbackground=accent, selectforeground="#ffffff", inactiveselectbackground=accent)
+        self.chat_display.tag_configure("sel", background=accent, foreground="#ffffff")
+        self.chat_display.tag_raise("sel")
+
+        # Restyle existing source chips to match new theme
+        for chip in getattr(self, "_source_chips", []):
+            try:
+                chip.configure(bg=self.t["CHIP_BG"], fg=self.t["CHIP_FG"])
+            except Exception:
+                pass
+
         # Redraw history to apply accent color to tags
         self.update_history()
 
@@ -650,9 +747,10 @@ class RAGApp:
         message = (
             "Tips:\n"
             "• Use Enter or Ctrl+Enter to send.\n"
-            "• Click links under Sources to open them.\n"
+            "• Click the chips under Sources to open links.\n"
             "• Toggle theme from the header.\n"
-            "• Click a history item to view its full content."
+            "• Click the “(click to expand)” in history to view the full entry.\n"
+            "• Select text in the chat to copy it (right-click for menu)."
         )
         messagebox.showinfo("Help", message)
 
@@ -660,7 +758,7 @@ class RAGApp:
 # ========= MAIN ==========
 if __name__ == "__main__":
     root = tk.Tk()
-    # If you want the model badge to show the active LLM name:
+    # Show the active model name in the header (if available)
     try:
         active_model = getattr(llm, "model_name", "Chat Model")
     except NameError:
