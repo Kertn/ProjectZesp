@@ -1,15 +1,13 @@
 import asyncio
 import aiohttp
 import os
-import json
-import csv
-import pickle
 from langchain.document_loaders import AsyncHtmlLoader, PyPDFLoader, Docx2txtLoader  # Reverted to PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
+# from langchain_community.document_loaders import AsyncHtmlLoader, PyPDFLoader, Docx2txtLoader
+# from langchain_community.vectorstores import FAISS
 from urllib.parse import urlparse
-import docx2txt
 from bs4 import BeautifulSoup
 
 # Configuration (Updated: Larger chunks for more context)
@@ -113,7 +111,7 @@ async def load_and_unite():
     return all_docs
 
 
-documents = await load_and_unite()
+documents = asyncio.run(load_and_unite())
 
 # Step 4: Divide into chunks (with updated sizes)
 splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
@@ -123,7 +121,7 @@ print(f"Created {len(chunks)} chunks.")
 # Step 5: Store (focus on FAISS)
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vectorstore = FAISS.from_documents(chunks, embeddings)
-vectorstore.save_local('faiss_index')
+vectorstore.save_local('faiss_index_1')
 print("Stored as FAISS vector store: 'faiss_index' folder")
 
 print("Rebuild complete! Now re-run your RAG cells.")

@@ -105,5 +105,5 @@ async def main():
     print(f"Done! {len(all_doc_links)} unique PDF/DOCX links saved to '{OUTPUT_FILE}'. Download it from Kaggle.")
 
 
-# Run the async main function (works in Jupyter/Kaggle)
-await main()
+if __name__ == "__main__":
+    asyncio.run(main())

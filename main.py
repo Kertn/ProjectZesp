@@ -15,12 +15,12 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # ========  CONFIGURATION  ========
-
 # ========  LOAD RAG COMPONENTS  ========
 try:
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vectorstore = FAISS.load_local('faiss_index', embeddings, allow_dangerous_deserialization=True)
-    llm = ChatOpenAI(model_name="gpt-5-mini-2025-08-07", temperature=0.2)
+    #"gpt-5-mini-2025-08-07"
+    llm = ChatOpenAI(model_name='gpt-5-2025-08-07', temperature=0.2)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 20})
 
     prompt_template = """Use the following pieces of context from documents to answer the question. 

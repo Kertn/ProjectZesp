@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urldefrag, urlparse
 from urllib import robotparser
 
-
 START_URL = "https://al.edu.pl/wnit"
 DOMAIN_PREFIX = "https://al.edu.pl/wnit"  # stricter domain filter
 OUTPUT_FILE = "Data/links.txt"
@@ -16,20 +15,24 @@ visited = set()
 found_links = set()
 queue = asyncio.Queue()
 
-
-
-
 def normalize_url(base, link):
     joined = urljoin(base, link)
     clean, _ = urldefrag(joined)
     return clean.rstrip("/")
+
+def is_html_page(url: str) -> bool:
+    # Only allow typical web pages (filter out known document extensions)
+    path = urlparse(url).path.lower()
+    disallowed_exts = (".pdf", ".doc", ".docx")
+    return not any(path.endswith(ext) for ext in disallowed_exts)
 
 async def fetch(session, url):
     await asyncio.sleep(DELAY_BETWEEN_REQUESTS)
     try:
         async with async_timeout.timeout(20):
             async with session.get(url, headers={"User-Agent": USER_AGENT}) as resp:
-                if resp.status == 200 and "text/html" in resp.headers.get("Content-Type", ""):
+                content_type = resp.headers.get("Content-Type", "")
+                if resp.status == 200 and "text/html" in content_type:
                     return await resp.text()
     except Exception:
         pass
@@ -39,7 +42,7 @@ async def get_robot_parser(session, url):
     parsed = urlparse(url)
     robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
     try:
-        async with session.get(robots_url) as resp:
+        async with session.get(robots_url, headers={"User-Agent": USER_AGENT}) as resp:
             if resp.status == 200:
                 text = await resp.text()
                 rp = robotparser.RobotFileParser()
@@ -59,7 +62,10 @@ async def crawl():
         while not queue.empty():
             current_url = await queue.get()
 
+            # Domain and extension filtering
             if current_url in visited or not current_url.startswith(DOMAIN_PREFIX):
+                continue
+            if not is_html_page(current_url):
                 continue
 
             if not rp.can_fetch(USER_AGENT, current_url):
@@ -68,11 +74,14 @@ async def crawl():
 
             print(f"[CRAWLING] {current_url}")
             visited.add(current_url)
-            found_links.add(current_url)
 
             html = await fetch(session, current_url)
             if not html:
+                # Not HTML or failed; do not record in found_links
                 continue
+
+            # Only record after confirming it's an HTML page
+            found_links.add(current_url)
 
             soup = BeautifulSoup(html, "html.parser")
             for a in soup.find_all("a", href=True):
@@ -81,15 +90,19 @@ async def crawl():
                     continue
                 try:
                     absolute_url = normalize_url(current_url, href)
-                    if absolute_url.startswith(DOMAIN_PREFIX) and absolute_url not in visited:
+                    if (
+                        absolute_url.startswith(DOMAIN_PREFIX)
+                        and absolute_url not in visited
+                        and is_html_page(absolute_url)  # skip pdf/doc/docx before enqueue
+                    ):
                         await queue.put(absolute_url)
                 except Exception:
                     continue
 
-        print(f"\n✅ Done! {len(found_links)} unique links found.")
+        print(f"\n✅ Done! {len(found_links)} unique HTML links found.")
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             for link in sorted(found_links):
                 f.write(link + "\n")
 
-
-await crawl()
+if __name__ == "__main__":
+    asyncio.run(crawl())
